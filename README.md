@@ -1,5 +1,5 @@
 # mymovielist
-anoddnumber: The Dark Knight
+anoddnumber: The Dark Knight, Learn to use vim proficiently.
 
 vinegarrick: Spirited Away
 
