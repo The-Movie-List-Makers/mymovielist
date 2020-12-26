@@ -5,4 +5,4 @@ vinegarrick: Spirited Away
 
 levelmeup5: Iron Man, Learn to use Git proficiently.
 
-chloegng: My Neighbor Totoro
+chloegng: My Neighbor Totoro, learn javascript
