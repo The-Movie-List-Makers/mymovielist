@@ -5,4 +5,4 @@ vinegarrick: Spirited Away
 
 levelmeup5: Iron Man
 
-chloegng: My Neighbor Totoro
+chloegng: My Neighbor Totoro, learn javascript
