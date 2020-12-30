@@ -5,4 +5,4 @@ vinegarrick: Spirited Away, Learn to use javascript proficiently.
 
 levelmeup5: Iron Man, Learn to use Git proficiently.
 
-chloegng: My Neighbor Totoro, learn javascript
+chloegng: My Neighbor Totoro, learn javascript, Git provides version control which is very helpful for developers to easily revert a commit, check back the state of a previous commit, and easily fastforward to another commit.
