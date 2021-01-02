@@ -15,7 +15,7 @@ public class MovieListController {
 	}
 
 	@GetMapping("/register")
-	public String login() {
+	public String register() {
 		return "register";
 	}
 }
