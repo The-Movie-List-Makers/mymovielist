@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MovieListController {
 
+	@GetMapping("/")
+	public String navbar() {
+		return "navbar";
+	}
+
 	@GetMapping("/login")
 	public String login() {
 		return "login";
