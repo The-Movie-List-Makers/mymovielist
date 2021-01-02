@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MyMovieList</title>
+    <link rel="stylesheet" href="movielist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="siteheader">
+        <div class="homebtn"><a href="/">MyMovieList</a></div>
+        <div class="user-header"><a href="register"><button class="signup">Sign Up</button></a><a href="login"><button class="login">Login</button></a></div>
+    </div>
+    <div class="navbar">
+        <div class="dropdown"><button class="dropbtn">TV Shows</button>
+            <div class="dropdown-content"><a href="show-search">Show Search</a><a href="top-shows">Top Shows</a><a href="annual-shows">Annual Shows</a><a href="show-reviews">Reviews</a></div>
+        </div>
+        <div class="dropdown"><button class="dropbtn">Movies</button>
+            <div class="dropdown-content"><a href="movie-search">Movie Search</a><a href="top movies">Top Movies</a><a href="annual-movies">Annual Movies</a><a href="movie-reviews">Reviews</a></div>
+        </div>
+        <div class="dropdown"><button class="dropbtn">Community</button>
+            <div class="dropdown-content"><a href="forums">Forums</a><a href="clubs">Clubs</a><a href="https://discord.gg/rDPsNx6">Discord Chat</a></div>
+        </div>
+        <div class="dropdown"><button class="dropbtn">Industry</button>
+            <div class="dropdown-content"><a href="news">News</a><a href="people">People</a><a href="characters">Characters</a></div>
+        </div>
+        <div class="dropdown"><button class="dropbtn">Help</button>
+            <div class="dropdown-content"><a href="about">About</a><a href="faq">FAQ</a><a href="report">Report</a></div>
+        </div>
+        <div class="search-container">
+            <form action="/action_page.php"><input type="text" placeholder="Search.." name="search"><button type="submit"><i class="fa fa-search"></i></button></form>
+        </div>
+        <div class="search-filter-container"><select>
+                <option value="all">All</option>
+                <option value="tvshows">TV Shows</option>
+                <option value="movies">Movies</option>
+                <option value="people">People</option>
+                <option value="characters">Characters</option>
+                <option value="news">News</option>
+                <option value="forum">Forum</option>
+            </select></div>
+    </div>
+</body>
+
+</html>
