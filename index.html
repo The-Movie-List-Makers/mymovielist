@@ -1,24 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="./style.css" type="text/css" rel="stylesheet">
     <title>My Movie List</title>
   </head>
+
   <body>
-    <h1>MyMovieList</h1>
-    <ul class="navigation">
-      <li>Movies</li>
-      <li>Community</li>
-      <li>Help</li>
-    </ul>
-    <div class="search">Search</div>
-    <div id="movies">
-      <h2>Movies</h2>
-      <ol>
-        <li><a href="./MovieDetails.html"><img src="https://upload.wikimedia.org/wikipedia/en/0/00/Iron_Man_poster.jpg" alt="Iron Man poster."/></a> <br> <a href="./MovieDetails.html">Iron Man</a></li>
-        <li><a href="./MovieDetails.html"><img src="https://images-na.ssl-images-amazon.com/images/I/51Mg8os52AL._AC_.jpg" alt="My Neighbor Totoro poster."/></a> <br> <a href="./MovieDetails.html">My Neighbor Totoro</a></li>
-        <li><a href="./MovieDetails.html"><img src="https://ogden_images.s3.amazonaws.com/www.lockhaven.com/images/2020/09/23170417/Spirited-poster-555x840.jpg" alt="Spirited Away poster."/></a> <br> <a href="./MovieDetails.html">Spirited Away</a></li>
-        <li><a href="./MovieDetails.html"><img src="https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg" alt="The Dark Knight poster."/></a> <br> <a href="./MovieDetails.html">The Dark Knight</a></li>
-      </ol>
-    </div>
+    <header>
+      <h1 id="the-title">MyMovieList</h1>
+      <nav>
+        <ul>
+          <li>Movies</li>
+          <li>Community</li>
+          <li>Help</li>
+        </ul>
+        <div class="search">Search</div>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <div id="movies">
+          <h2>Movies</h2>
+          <figure>
+            <a href="./MovieDetails.html"><img src="https://upload.wikimedia.org/wikipedia/en/0/00/Iron_Man_poster.jpg" alt="Iron Man poster."/></a>
+            <figcaption class="movie-title">Iron Man</figcaption>
+          </figure>
+          <figure>
+            <a href="./MovieDetails.html"><img src="https://images-na.ssl-images-amazon.com/images/I/51Mg8os52AL._AC_.jpg" alt="My Neighbor Totoro poster."/></a>
+            <figcaption class="movie-title">My Neighbor Totoro</figcaption>
+          </figure>
+          <figure>
+            <a href="./MovieDetails.html"><img src="https://ogden_images.s3.amazonaws.com/www.lockhaven.com/images/2020/09/23170417/Spirited-poster-555x840.jpg" alt="Spirited Away poster."/></a>
+            <figcaption class="movie-title">Spirited Away</figcaption>
+          </figure>
+          <figure>
+            <a href="./MovieDetails.html"><img src="https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg" alt="The Dark Knight poster."/></a>
+            <figcaption class="movie-title">The Dark Knight</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>©January 2021</p>
+    </footer>
   </body>
 </html>
