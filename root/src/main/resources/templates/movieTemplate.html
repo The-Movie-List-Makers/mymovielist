@@ -1,0 +1,25 @@
+<div class="movielist" th:unless="${#lists.isEmpty(allMovies)}">
+    
+  <h2 th:text="#{title.list}">List of Movies</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th th:text="#{movie.releaseDate}">Release Date</th>
+        <th th:text="#{movie.title}">Title</th>
+        <th th:text="#{movie.rating}">Rating</th>
+        <th th:text="#{movie.type}">type</th>
+        <th th:text="#{movie.duration}">Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="sb : ${allmovies}">
+        <td th:text="${{sb.releaseDate}}">04/16/1998</td>
+        <td th:text="${{sb.title}}">My Neighbor Totoro</td>
+        <td th:text="${{sb.rating}}">G</td>
+        <td th:text="${{sb.tyle}}">Movie</td>
+        <td th:text="${{sb.duration}}">86 minutes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
