@@ -7,7 +7,20 @@
 h2 {
   font-family: Arial;
   color: teal;
-  font-size: 35px;
+  font-size: 40px;
+}
+
+body {
+  margin: 30px;
+}
+
+.container {
+  margin: 20px;
+  border: 2px solid blue;
+  width: 95%;
+  height: 550px;
+  overflow: scroll;
+  padding: 5px;
 }
 
 .movie-title {
@@ -16,4 +29,20 @@ h2 {
   font-family: Arial;
   color: teal;
   font-size: 18px;
+}
+
+figure {
+  text-align: center;
+  width: 300px;
+  height: auto;
+  display: inline-block;
+}
+
+figcaption {
+  text-align: center;
+}
+
+img {
+  width: 300px;
+  height: auto;
 }
