@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 #site {
   font-family: Arial;
   color: teal;
@@ -19,7 +23,8 @@ body {
   border: 2px solid blue;
   width: 95%;
   height: 550px;
-  overflow: scroll;
+  overflow: auto;
+  white-space: nowrap;
   padding: 5px;
 }
 
