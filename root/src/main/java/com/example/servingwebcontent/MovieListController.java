@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.*;
 import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 @Controller
 public class MovieListController {
-	ConnectDatabase connection = new ConnectDatabase("movielist", "root", "moviepass");
 
 	@GetMapping("/navbar")
 	public String navbar() {
@@ -30,6 +32,19 @@ public class MovieListController {
 
 	@GetMapping("/test")
 	public String test() {
+		BufferedReader reader;
+		String user = "", pass = "";
+	
+		try {
+			reader = new BufferedReader (new FileReader("./userInfo.txt"));
+			String line = reader.readLine();
+			user = line;
+			line = reader.readLine();
+			pass = line;
+			reader.close();
+		} catch (IOException e) { System.out.println(e); }
+
+		ConnectDatabase connection = new ConnectDatabase("movielist", user, pass);
 		//ResultSet rs = connection.queryDB("select * from movies");
 
 		MovieObject newMovie = new MovieObject("4", "Movie", "Titanic", "1997-12-19", 195, "PG-13");
