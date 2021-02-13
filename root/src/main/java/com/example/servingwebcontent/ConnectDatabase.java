@@ -6,13 +6,14 @@ import java.util.*;
 public class ConnectDatabase {
 	Connection con = null;
 
-	public ConnectDatabase () {
-	}
-
 	public ConnectDatabase (String database, String user, String pass) {
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost/" + database + "?" + "user=" + user + "&password=" + pass);
-		} catch (SQLException e) { System.out.println(e); }
+		} 
+		catch (SQLException e) { 
+			System.out.println(e);
+			throw new RuntimeException(); 
+		}
 	}
 
 	public ResultSet queryDB (String query) {
@@ -20,13 +21,17 @@ public class ConnectDatabase {
 		try {
 			Statement stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
-		} catch (SQLException e) { System.out.println(e); }
+		} catch (SQLException e) { 
+			System.out.println(e);
+			this.closeConnection();
+			throw new RuntimeException(); 
+		}
 
 		return rs;
 	}
 
 	public void movieInsert (MovieObject newMovie) {
-		String query = "insert into movies (movieid, type, name, releasedate, duration, filmrating)" + " values (?, ?, ?, ?, ?, ?)";
+		String query = "insert into movies (movieid, type, name, releasedate, duration, filmrating) values (?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			preparedStmt.setString (1, newMovie.id);
@@ -36,21 +41,27 @@ public class ConnectDatabase {
 			preparedStmt.setInt (5, newMovie.duration);
 			preparedStmt.setString (6, newMovie.filmRating);
 			preparedStmt.execute();
-		} catch (SQLException e) { System.out.println(e); }
+		} catch (SQLException e) { 
+			System.out.println(e); 
+			throw new RuntimeException();
+		}
 
 	}
 
 	public void closeConnection() {
 		try {
 			con.close();
-		} catch (SQLException e) { System.out.println(e); }
+		} catch (SQLException e) { 
+			System.out.println(e);
+			throw new RuntimeException(); 
+		}
 	}
 
 	public Connection getConnection () {
 		return con;
 	}
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws ClassNotFoundException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) { System.out.println(e); }
