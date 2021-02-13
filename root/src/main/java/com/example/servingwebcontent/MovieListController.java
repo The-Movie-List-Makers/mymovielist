@@ -11,6 +11,8 @@ import java.util.*;
 
 @Controller
 public class MovieListController {
+	ConnectDatabase connection = new ConnectDatabase("movielist", "root", "moviepass");
+
 	@GetMapping("/navbar")
 	public String navbar() {
 		return "navbar";
@@ -28,24 +30,17 @@ public class MovieListController {
 
 	@GetMapping("/test")
 	public String test() {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			//Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			//Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8080/movielist","root","moviepass");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/movielist?" + "user=root&password=moviepass");
+		//ResultSet rs = connection.queryDB("select * from movies");
 
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from movies");
+		MovieObject newMovie = new MovieObject("4", "Movie", "Titanic", "1997-12-19", 195, "PG-13");
+		connection.movieInsert(newMovie);
 
-			ArrayList<movieObject> movies = new ArrayList<movieObject>();
-			while (rs.next()) {
-				movieObject movie = new movieObject(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6));
-				movies.add(movie);
-				System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " " + rs.getInt(5) +  " " + rs.getString(6));
-			}
-			con.close();
-		} catch (Exception e) { System.out.println(e); }
-		System.out.println("hello world");
+		/**rs = connection.queryDB("select * from movies");
+		while (rs.next()) {
+			System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " " + rs.getInt(5) +  " " + rs.getString(6));
+		}**/
+
+		connection.closeConnection();
 
 		return "test";
 	}
