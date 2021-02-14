@@ -11,8 +11,7 @@ public class ConnectDatabase {
 			con = DriverManager.getConnection("jdbc:mysql://localhost/" + database + "?" + "user=" + user + "&password=" + pass);
 		} 
 		catch (SQLException e) { 
-			System.out.println(e);
-			throw new RuntimeException(); 
+			throw new RuntimeException("failed to connect to db" ,e); 
 		}
 	}
 
@@ -22,15 +21,13 @@ public class ConnectDatabase {
 			Statement stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 		} catch (SQLException e) { 
-			System.out.println(e);
-			this.closeConnection();
-			throw new RuntimeException(); 
+			throw new RuntimeException("failed to query db" ,e); 
 		}
 
 		return rs;
 	}
 
-	public void movieInsert (MovieObject newMovie) {
+	public void movieInsert (Movie newMovie) {
 		String query = "insert into movies (movieid, type, name, releasedate, duration, filmrating) values (?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -42,8 +39,7 @@ public class ConnectDatabase {
 			preparedStmt.setString (6, newMovie.filmRating);
 			preparedStmt.execute();
 		} catch (SQLException e) { 
-			System.out.println(e); 
-			throw new RuntimeException();
+			throw new RuntimeException("failed to insert into db" ,e);
 		}
 
 	}
@@ -52,8 +48,7 @@ public class ConnectDatabase {
 		try {
 			con.close();
 		} catch (SQLException e) { 
-			System.out.println(e);
-			throw new RuntimeException(); 
+			throw new RuntimeException("failed to close connection", e); 
 		}
 	}
 
@@ -64,6 +59,6 @@ public class ConnectDatabase {
 	public static void main(String args[]) throws ClassNotFoundException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) { System.out.println(e); }
+		} catch (ClassNotFoundException e) {}
 	}
 }

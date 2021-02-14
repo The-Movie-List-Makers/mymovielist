@@ -42,12 +42,18 @@ public class MovieListController {
 			line = reader.readLine();
 			pass = line;
 			reader.close();
-		} catch (IOException e) { System.out.println(e); }
+		} catch (IOException e) { throw new RuntimeException(e); }
 
-		ConnectDatabase connection = new ConnectDatabase("movielist", user, pass);
+		
+		try {
+			ConnectDatabase connection = new ConnectDatabase("movielist", user, pass);
 
-		MovieObject newMovie = new MovieObject("4", "Movie", "Titanic", "1997-12-19", 195, "PG-13");
-		connection.movieInsert(newMovie);
+			Movie newMovie = new Movie("4", "Movie", "Titanic", "1997-12-19", 195, "PG-13");
+			connection.movieInsert(newMovie);
+		} catch (SQLException e) {
+			connection.closeConnection();
+			throw new RuntimeException(e);
+		}
 
 		connection.closeConnection();
 
