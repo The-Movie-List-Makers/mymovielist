@@ -31,12 +31,12 @@ public class ConnectDatabase {
 		String query = "insert into movies (movieid, type, name, releasedate, duration, filmrating) values (?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
-			preparedStmt.setString (1, newMovie.id);
-			preparedStmt.setString (2, newMovie.type);
-			preparedStmt.setString (3, newMovie.name);
-			preparedStmt.setString (4, newMovie.releaseDate);
-			preparedStmt.setInt (5, newMovie.duration);
-			preparedStmt.setString (6, newMovie.filmRating);
+			preparedStmt.setString (1, newMovie.getId());
+			preparedStmt.setString (2, newMovie.getType());
+			preparedStmt.setString (3, newMovie.getName());
+			preparedStmt.setString (4, newMovie.getReleaseDate());
+			preparedStmt.setInt (5, newMovie.getDuration());
+			preparedStmt.setString (6, newMovie.getFilmRating());
 			preparedStmt.execute();
 		} catch (SQLException e) { 
 			throw new RuntimeException("failed to insert into db" ,e);
