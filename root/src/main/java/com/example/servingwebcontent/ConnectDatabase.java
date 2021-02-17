@@ -57,8 +57,6 @@ public class ConnectDatabase {
 	}
 
 	public static void main(String args[]) throws ClassNotFoundException {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {}
+		Class.forName("com.mysql.cj.jdbc.Driver");
 	}
 }
