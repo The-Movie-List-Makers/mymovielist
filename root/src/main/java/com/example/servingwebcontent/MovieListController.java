@@ -48,9 +48,7 @@ public class MovieListController {
 		try {
 			Movie newMovie = new Movie("4", "Movie", "Titanic", "1997-12-19", 195, "PG-13");
 			connection.movieInsert(newMovie);
-		} //catch (SQLException e) {
-			//throw new RuntimeException("failed to connect to or insert into db" ,e);
-		//}
+		}
 		finally {
 			connection.closeConnection();
 		}
