@@ -77,8 +77,6 @@ public class MovieListController {
 
 		try {
 			ResultSet rs = connection.queryDB("SELECT * from movies WHERE movieid = '" + movieId + "'");
-		} catch (SQLException e) {
-			throw new RuntimeException("failed to query db", e);
 		}
 		finally {
 			connection.closeConnection();
