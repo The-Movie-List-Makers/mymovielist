@@ -21,7 +21,7 @@ public class ConnectDatabase {
 			Statement stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 		} catch (SQLException e) { 
-			throw new RuntimeException("failed to query db" ,e); 
+			throw new RuntimeException("failed to query db", e); 
 		}
 
 		return rs;
@@ -39,7 +39,7 @@ public class ConnectDatabase {
 			preparedStmt.setString (6, newMovie.getFilmRating());
 			preparedStmt.execute();
 		} catch (SQLException e) { 
-			throw new RuntimeException("failed to insert into db" ,e);
+			throw new RuntimeException("failed to insert into db", e);
 		}
 
 	}

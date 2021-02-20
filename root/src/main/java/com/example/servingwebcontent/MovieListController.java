@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.sql.*;
 import java.util.*;
@@ -30,7 +31,7 @@ public class MovieListController {
 		return "register";
 	}
 
-	@GetMapping("/test")
+	/**@GetMapping("/test")
 	public String test() throws java.io.FileNotFoundException {
 		BufferedReader reader;
 		String user = "", pass = "";
@@ -54,6 +55,41 @@ public class MovieListController {
 		}
 
 		connection.closeConnection();
+
+		return "test";
+	}**/
+
+	@GetMapping(value = "/test/{movieId}")
+	public String test (@PathVariable String movieId) throws java.io.FileNotFoundException {
+		BufferedReader reader;
+		String user = "", pass = "";
+	
+		try {
+			reader = new BufferedReader (new FileReader("./userInfo.txt"));
+			String line = reader.readLine();
+			user = line;
+			line = reader.readLine();
+			pass = line;
+			reader.close();
+		} catch (IOException e) { throw new RuntimeException("user info file not found" ,e); }
+
+		ConnectDatabase connection = new ConnectDatabase("movielist", user, pass);
+
+		try {
+			ResultSet rs = connection.queryDB("SELECT * from movies WHERE movieid = '" + movieId + "'");
+			while (rs.next()) {
+				for (int i = 1 ; i <= 6 ; ++i) {
+					if (i > 1) System.out.print(" | ");
+					System.out.print(rs.getString(i));
+				}
+				System.out.println("");
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException("failed to query db", e);
+		}
+		finally {
+			connection.closeConnection();
+		}
 
 		return "test";
 	}
