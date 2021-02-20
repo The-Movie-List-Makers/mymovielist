@@ -77,13 +77,6 @@ public class MovieListController {
 
 		try {
 			ResultSet rs = connection.queryDB("SELECT * from movies WHERE movieid = '" + movieId + "'");
-			while (rs.next()) {
-				for (int i = 1 ; i <= 6 ; ++i) {
-					if (i > 1) System.out.print(" | ");
-					System.out.print(rs.getString(i));
-				}
-				System.out.println("");
-			}
 		} catch (SQLException e) {
 			throw new RuntimeException("failed to query db", e);
 		}
