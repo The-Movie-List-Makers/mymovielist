@@ -31,34 +31,6 @@ public class MovieListController {
 		return "register";
 	}
 
-	/**@GetMapping("/test")
-	public String test() throws java.io.FileNotFoundException {
-		BufferedReader reader;
-		String user = "", pass = "";
-	
-		try {
-			reader = new BufferedReader (new FileReader("./userInfo.txt"));
-			String line = reader.readLine();
-			user = line;
-			line = reader.readLine();
-			pass = line;
-			reader.close();
-		} catch (IOException e) { throw new RuntimeException("user info file not found" ,e); }
-
-		ConnectDatabase connection = new ConnectDatabase("movielist", user, pass);
-		try {
-			Movie newMovie = new Movie("4", "Movie", "Titanic", "1997-12-19", 195, "PG-13");
-			connection.movieInsert(newMovie);
-		}
-		finally {
-			connection.closeConnection();
-		}
-
-		connection.closeConnection();
-
-		return "test";
-	}**/
-
 	@GetMapping(value = "/test/{movieId}")
 	public String test (@PathVariable String movieId) throws java.io.FileNotFoundException {
 		BufferedReader reader;
@@ -66,17 +38,15 @@ public class MovieListController {
 	
 		try {
 			reader = new BufferedReader (new FileReader("./userInfo.txt"));
-			String line = reader.readLine();
-			user = line;
-			line = reader.readLine();
-			pass = line;
+			user = reader.readLine();
+			pass = reader.readLine();
 			reader.close();
 		} catch (IOException e) { throw new RuntimeException("user info file not found" ,e); }
 
 		ConnectDatabase connection = new ConnectDatabase("movielist", user, pass);
 
 		try {
-			ResultSet rs = connection.queryDB("SELECT * from movies WHERE movieid = '" + movieId + "'");
+			ResultSet rs = connection.getMovie(movieId);
 		}
 		finally {
 			connection.closeConnection();

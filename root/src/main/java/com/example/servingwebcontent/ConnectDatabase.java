@@ -15,11 +15,13 @@ public class ConnectDatabase {
 		}
 	}
 
-	public ResultSet queryDB (String query) {
+	public ResultSet getMovie (String id) {
 		ResultSet rs = null;
+		String query = "select * from movies where movieid=?";
 		try {
-			Statement stmt = con.createStatement();
-			rs = stmt.executeQuery(query);
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
 		} catch (SQLException e) { 
 			throw new RuntimeException("failed to query db", e); 
 		}
