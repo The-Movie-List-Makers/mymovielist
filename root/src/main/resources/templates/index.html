@@ -1,84 +1,130 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>My Movie List</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-    <link href="./movielist.css" type="text/css" rel="stylesheet">
-</head>
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href="css/movielist.css" type="text/css" rel="stylesheet" />
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1 id="site">MyMovieList</h1>
-        <nav>
-            <div class="siteheader">
-                <div class="homebtn"><a href="/">MyMovieList</a></div>
-                <div class="user-header"><a href="register"><button class="signup">Sign Up</button></a><a href="login"><button class="login">Login</button></a></div>
+      <h1 id="site">MyMovieList</h1>
+      <nav>
+        <div class="siteheader">
+          <div class="homebtn"><a href="/">MyMovieList</a></div>
+          <div class="user-header">
+            <a href="register"><button class="signup">Sign Up</button></a
+            ><a href="login"><button class="login">Login</button></a>
+          </div>
+        </div>
+        <div class="navbar">
+          <div class="dropdown">
+            <button class="dropbtn">TV Shows</button>
+            <div class="dropdown-content">
+              <a href="show-search">Show Search</a
+              ><a href="top-shows">Top Shows</a
+              ><a href="annual-shows">Annual Shows</a
+              ><a href="show-reviews">Reviews</a>
             </div>
-            <div class="navbar">
-                <div class="dropdown"><button class="dropbtn">TV Shows</button>
-                    <div class="dropdown-content"><a href="show-search">Show Search</a><a href="top-shows">Top Shows</a><a href="annual-shows">Annual Shows</a><a href="show-reviews">Reviews</a></div>
-                </div>
-                <div class="dropdown"><button class="dropbtn">Movies</button>
-                    <div class="dropdown-content"><a href="movie-search">Movie Search</a><a href="top movies">Top Movies</a><a href="annual-movies">Annual Movies</a><a href="movie-reviews">Reviews</a></div>
-                </div>
-                <div class="dropdown"><button class="dropbtn">Community</button>
-                    <div class="dropdown-content"><a href="forums">Forums</a><a href="clubs">Clubs</a><a href="https://discord.gg/rDPsNx6">Discord Chat</a></div>
-                </div>
-                <div class="dropdown"><button class="dropbtn">Industry</button>
-                    <div class="dropdown-content"><a href="news">News</a><a href="people">People</a><a href="characters">Characters</a></div>
-                </div>
-                <div class="dropdown"><button class="dropbtn">Help</button>
-                    <div class="dropdown-content"><a href="about">About</a><a href="faq">FAQ</a><a href="report">Report</a></div>
-                </div>
-                <div class="search-container">
-                    <form action="/action_page.php"><input type="text" placeholder="Search.." name="search"><button type="submit"><i class="fa fa-search"></i></button></form>
-                </div>
-                <div class="search-filter-container">
-                    <select>
-                        <option value="all">All</option>
-                        <option value="tvshows">TV Shows</option>
-                        <option value="movies">Movies</option>
-                        <option value="people">People</option>
-                        <option value="characters">Characters</option>
-                        <option value="news">News</option>
-                        <option value="forum">Forum</option>
-                    </select>
-                </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Movies</button>
+            <div class="dropdown-content">
+              <a href="movie-search">Movie Search</a
+              ><a href="top movies">Top Movies</a
+              ><a href="annual-movies">Annual Movies</a
+              ><a href="movie-reviews">Reviews</a>
             </div>
-        </nav>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Community</button>
+            <div class="dropdown-content">
+              <a href="forums">Forums</a><a href="clubs">Clubs</a
+              ><a href="https://discord.gg/rDPsNx6">Discord Chat</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Industry</button>
+            <div class="dropdown-content">
+              <a href="news">News</a><a href="people">People</a
+              ><a href="characters">Characters</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Help</button>
+            <div class="dropdown-content">
+              <a href="about">About</a><a href="faq">FAQ</a
+              ><a href="report">Report</a>
+            </div>
+          </div>
+          <div class="search-container">
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search" /><button
+                type="submit"
+              >
+                <i class="fa fa-search"></i>
+              </button>
+            </form>
+          </div>
+          <div class="search-filter-container">
+            <select>
+              <option value="all">All</option>
+              <option value="tvshows">TV Shows</option>
+              <option value="movies">Movies</option>
+              <option value="people">People</option>
+              <option value="characters">Characters</option>
+              <option value="news">News</option>
+              <option value="forum">Forum</option>
+            </select>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <section>
-            <div id="movies">
-                <h2>Movies</h2>
-                <div class="container">
-                    <figure>
-                        <a href="./MovieDetails.html"><img src="https://upload.wikimedia.org/wikipedia/en/0/00/Iron_Man_poster.jpg" alt="Iron Man poster."/></a>
-                        <figcaption class="movie-title">Iron Man</figcaption>
-                    </figure>
-                    <figure>
-                        <a href="./MovieDetails.html"><img src="https://images-na.ssl-images-amazon.com/images/I/51Mg8os52AL._AC_.jpg" alt="My Neighbor Totoro poster."/></a>
-                        <figcaption class="movie-title">My Neighbor Totoro</figcaption>
-                    </figure>
-                    <figure>
-                        <a href="./MovieDetails.html"><img src="https://ogden_images.s3.amazonaws.com/www.lockhaven.com/images/2020/09/23170417/Spirited-poster-555x840.jpg" alt="Spirited Away poster."/></a>
-                        <figcaption class="movie-title">Spirited Away</figcaption>
-                    </figure>
-                    <figure>
-                        <a href="./MovieDetails.html"><img src="https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg" alt="The Dark Knight poster."/></a>
-                        <figcaption class="movie-title">The Dark Knight</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
+      <section>
+        <div id="movies">
+          <h2>Movies</h2>
+          <div class="container">
+            <figure>
+              <a href="./MovieDetails.html"
+                ><img
+                  src="https://upload.wikimedia.org/wikipedia/en/0/00/Iron_Man_poster.jpg"
+                  alt="Iron Man poster."
+              /></a>
+              <figcaption class="movie-title">Iron Man</figcaption>
+            </figure>
+            <figure>
+              <a href="./MovieDetails.html"
+                ><img
+                  src="https://images-na.ssl-images-amazon.com/images/I/51Mg8os52AL._AC_.jpg"
+                  alt="My Neighbor Totoro poster."
+              /></a>
+              <figcaption class="movie-title">My Neighbor Totoro</figcaption>
+            </figure>
+            <figure>
+              <a href="./MovieDetails.html"
+                ><img
+                  src="https://ogden_images.s3.amazonaws.com/www.lockhaven.com/images/2020/09/23170417/Spirited-poster-555x840.jpg"
+                  alt="Spirited Away poster."
+              /></a>
+              <figcaption class="movie-title">Spirited Away</figcaption>
+            </figure>
+            <figure>
+              <a href="./MovieDetails.html"
+                ><img
+                  src="https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg"
+                  alt="The Dark Knight poster."
+              /></a>
+              <figcaption class="movie-title">The Dark Knight</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>©January 2021</p>
+      <p>©January 2021</p>
     </footer>
-
-</body>
-
+  </body>
 </html>
