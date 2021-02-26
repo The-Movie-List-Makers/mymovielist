@@ -31,8 +31,8 @@ public class MovieListController {
 		return "register";
 	}
 
-	@GetMapping(value = "/test/{movieId}")
-	public String test (@PathVariable String movieId) throws java.io.FileNotFoundException {
+	@GetMapping(value = "/movie/{movieId}")
+	public String movie (@PathVariable String movieId) throws java.io.FileNotFoundException {
 		BufferedReader reader;
 		String user = "", pass = "";
 	
@@ -52,6 +52,6 @@ public class MovieListController {
 			connection.closeConnection();
 		}
 
-		return "test";
+		return "movie";
 	}
 }
