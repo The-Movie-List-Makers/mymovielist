@@ -15,31 +15,53 @@ public class ConnectDatabase {
 		}
 	}
 
-	public ResultSet queryDB (String query) {
+	public ResultSet getMovie (String id) {
 		ResultSet rs = null;
+		String query = "select * from movies where id=?";
 		try {
-			Statement stmt = con.createStatement();
-			rs = stmt.executeQuery(query);
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
 		} catch (SQLException e) { 
-			throw new RuntimeException("failed to query db" ,e); 
+			throw new RuntimeException("failed to query db", e); 
+		}
+
+		return rs;
+	}
+
+	public ResultSet updateMovie (Movie movie) {
+		ResultSet rs = null;
+		String query = "update movies set type = ?, name = ?, releasedate = ?, duration = ?, filmrating = ? where id = ?";
+		int i = 1;
+		try {
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString (i++, movie.getType());
+			preparedStmt.setString (i++, movie.getName());
+			preparedStmt.setString (i++, movie.getReleaseDate());
+			preparedStmt.setString (i++, movie.getDuration());
+			preparedStmt.setString (i++, movie.getFilmRating());
+			preparedStmt.setString (i++, movie.getId());
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			throw new RuntimeException("failed to update movie entry", e);
 		}
 
 		return rs;
 	}
 
 	public void movieInsert (Movie newMovie) {
-		String query = "insert into movies (movieid, type, name, releasedate, duration, filmrating) values (?, ?, ?, ?, ?, ?)";
+		String query = "insert into movies (type, name, releasedate, duration, filmrating) values (?, ?, ?, ?, ?)";
 		try {
+			int i = 1;
 			PreparedStatement preparedStmt = con.prepareStatement(query);
-			preparedStmt.setString (1, newMovie.getId());
-			preparedStmt.setString (2, newMovie.getType());
-			preparedStmt.setString (3, newMovie.getName());
-			preparedStmt.setString (4, newMovie.getReleaseDate());
-			preparedStmt.setInt (5, newMovie.getDuration());
-			preparedStmt.setString (6, newMovie.getFilmRating());
+			preparedStmt.setString (i++, newMovie.getType());
+			preparedStmt.setString (i++, newMovie.getName());
+			preparedStmt.setString (i++, newMovie.getReleaseDate());
+			preparedStmt.setInt (i++, newMovie.getDuration());
+			preparedStmt.setString (i++, newMovie.getFilmRating());
 			preparedStmt.execute();
 		} catch (SQLException e) { 
-			throw new RuntimeException("failed to insert into db" ,e);
+			throw new RuntimeException("failed to insert into db", e);
 		}
 
 	}
