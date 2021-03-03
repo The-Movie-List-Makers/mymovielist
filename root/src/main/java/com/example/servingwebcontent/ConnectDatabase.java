@@ -81,7 +81,7 @@ public class ConnectDatabase {
 	}
 
 	public void ratingInsert (MovieRating movieRating) {
-		String query "insert into ratings (userid, movieid, status, rating) values (?, ?, ?, ?)";
+		String query = "insert into ratings (userid, movieid, status, rating) values (?, ?, ?, ?)";
 		try {
 			int i = 1;
 			PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -95,7 +95,7 @@ public class ConnectDatabase {
 		}
 	}
 
-	public ResultSet updateRating (Movie movieRating, String id) {
+	public ResultSet updateRating (MovieRating movieRating, String id) {
 		ResultSet rs = null;
 		String query = "update ratings set userid = ?, moviveid = ?, status = ?, rating = ? where id = ?";
 		int i = 1;
@@ -105,7 +105,7 @@ public class ConnectDatabase {
 			preparedStmt.setString (i++, movieRating.getMovieID());
 			preparedStmt.setString (i++, movieRating.getStatus());
 			preparedStmt.setInt (i++, movieRating.getRating());
-			reparedStmt.setString (i++, id);
+			preparedStmt.setString (i++, id);
 			preparedStmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException("failed to update movie entry", e);
@@ -152,7 +152,7 @@ public class ConnectDatabase {
 			preparedStmt.setString (i++, newUser.getFirstName());
 			preparedStmt.setString (i++, newUser.getLastName());
 			preparedStmt.setString (i++, newUser.getHandleName());
-			reparedStmt.setString (i++, id);
+			preparedStmt.setString (i++, id);
 			preparedStmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException("failed to update user entry", e);

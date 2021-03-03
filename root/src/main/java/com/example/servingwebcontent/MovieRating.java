@@ -18,11 +18,11 @@ public class MovieRating {
 		return status;
 	}
 
-	public String getRating () {
+	public int getRating () {
 		return rating;
 	}
 
-	public User (String userID, String movieID, String status, int rating) {
+	public MovieRating (String userID, String movieID, String status, int rating) {
 		this.userID = userID;
 		this.movieID = movieID;
 		this.status = status;
