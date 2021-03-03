@@ -38,7 +38,7 @@ public class ConnectDatabase {
 			preparedStmt.setString (i++, movie.getType());
 			preparedStmt.setString (i++, movie.getName());
 			preparedStmt.setString (i++, movie.getReleaseDate());
-			preparedStmt.setString (i++, movie.getDuration());
+			preparedStmt.setInt (i++, movie.getDuration());
 			preparedStmt.setString (i++, movie.getFilmRating());
 			preparedStmt.setString (i++, movie.getId());
 			preparedStmt.execute();

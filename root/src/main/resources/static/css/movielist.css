@@ -3,7 +3,7 @@
   overflow: hidden;
   width: 1000px;
   text-align: center;
-  margin: 0 auto;
+  margin: 0 0;
 }
 
 .user-header {
@@ -11,7 +11,7 @@
 }
 
 .homebtn {
-  font-size: 35px;
+  font-size: 50px;
   font-family: Helvetica;
   text-align: left;
   float: left;
@@ -52,7 +52,7 @@
   font-family: Arial;
   width: 1000px;
   text-align: center;
-  margin: 0 auto;
+  margin: 0 0;
 }
 
 /* Links inside the navbar */
@@ -135,7 +135,7 @@ select {
 }
 
 /* Style the search box inside the navigation bar */
-.navbar input[type="text"] {
+.navbar input[type='text'] {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -163,7 +163,7 @@ select {
     float: none;
   }
   .navbar a,
-  .navbar input[type="text"],
+  .navbar input[type='text'],
   .navbar .search-container button {
     float: none;
     display: block;
@@ -172,7 +172,7 @@ select {
     margin: 0;
     padding: 14px;
   }
-  .navbar input[type="text"] {
+  .navbar input[type='text'] {
     border: 1px solid #ccc;
   }
 }
