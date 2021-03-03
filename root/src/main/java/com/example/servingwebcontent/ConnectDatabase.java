@@ -23,13 +23,13 @@ public class ConnectDatabase {
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
 		} catch (SQLException e) { 
-			throw new RuntimeException("failed to query db", e); 
+			throw new RuntimeException("failed to query movies table", e); 
 		}
 
 		return rs;
 	}
 
-	public ResultSet updateMovie (Movie movie) {
+	public ResultSet updateMovie (Movie movie, String id) {
 		ResultSet rs = null;
 		String query = "update movies set type = ?, name = ?, releasedate = ?, duration = ?, filmrating = ? where id = ?";
 		int i = 1;
@@ -38,9 +38,9 @@ public class ConnectDatabase {
 			preparedStmt.setString (i++, movie.getType());
 			preparedStmt.setString (i++, movie.getName());
 			preparedStmt.setString (i++, movie.getReleaseDate());
-			preparedStmt.setString (i++, movie.getDuration());
+			preparedStmt.setInt (i++, movie.getDuration());
 			preparedStmt.setString (i++, movie.getFilmRating());
-			preparedStmt.setString (i++, movie.getId());
+			preparedStmt.setString (i++, id);
 			preparedStmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException("failed to update movie entry", e);
@@ -61,9 +61,104 @@ public class ConnectDatabase {
 			preparedStmt.setString (i++, newMovie.getFilmRating());
 			preparedStmt.execute();
 		} catch (SQLException e) { 
-			throw new RuntimeException("failed to insert into db", e);
+			throw new RuntimeException("failed to insert into movie table", e);
 		}
 
+	}
+
+	public ResultSet getRating (String id) {
+		ResultSet rs = null;
+		String query = "select * from ratings where id=?";
+		try {
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
+		} catch (SQLException e) { 
+			throw new RuntimeException("failed to query ratings table", e); 
+		}
+
+		return rs;
+	}
+
+	public void ratingInsert (MovieRating movieRating) {
+		String query "insert into ratings (userid, movieid, status, rating) values (?, ?, ?, ?)";
+		try {
+			int i = 1;
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString (i++, movieRating.getUserID());
+			preparedStmt.setString (i++, movieRating.getMovieID());
+			preparedStmt.setString (i++, movieRating.getStatus());
+			preparedStmt.setInt (i++, movieRating.getRating());
+			preparedStmt.execute();
+		} catch (SQLException e) { 
+			throw new RuntimeException("failed to insert into ratings table", e);
+		}
+	}
+
+	public ResultSet updateRating (Movie movieRating, String id) {
+		ResultSet rs = null;
+		String query = "update ratings set userid = ?, moviveid = ?, status = ?, rating = ? where id = ?";
+		int i = 1;
+		try {
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString (i++, movieRating.getUserID());
+			preparedStmt.setString (i++, movieRating.getMovieID());
+			preparedStmt.setString (i++, movieRating.getStatus());
+			preparedStmt.setInt (i++, movieRating.getRating());
+			reparedStmt.setString (i++, id);
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			throw new RuntimeException("failed to update movie entry", e);
+		}
+
+		return rs;
+	}
+
+	public ResultSet getUser (String id) {
+		ResultSet rs = null;
+		String query = "select * from users where id=?";
+		try {
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
+		} catch (SQLException e) { 
+			throw new RuntimeException("failed to query user table", e); 
+		}
+
+		return rs;
+	}
+
+	public void userInsert (User newUser) {
+		String query = "insert into users (firstName, lastName, handleName) values (?, ?, ?)";
+		try {
+			int i = 1;
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString (i++, newUser.getFirstName());
+			preparedStmt.setString (i++, newUser.getLastName());
+			preparedStmt.setString (i++, newUser.getHandleName());
+			preparedStmt.execute();
+		} catch (SQLException e) { 
+			throw new RuntimeException("failed to insert into user table", e);
+		}
+
+	}
+
+	public ResultSet updateUser (User newUser, String id) {
+		ResultSet rs = null;
+		String query = "update users set firstName = ?, lastName = ?, handleName = ?";
+		int i = 1;
+		try {
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString (i++, newUser.getFirstName());
+			preparedStmt.setString (i++, newUser.getLastName());
+			preparedStmt.setString (i++, newUser.getHandleName());
+			reparedStmt.setString (i++, id);
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			throw new RuntimeException("failed to update user entry", e);
+		}
+
+		return rs;
 	}
 
 	public void closeConnection() {
