@@ -17,7 +17,7 @@ public class ConnectDatabase {
 
 	public Movie getMovie (String id) {
 		ResultSet rs = null;
-		String query = "select * from movies where id=?";
+		String query = "select * from movies where " + Movie.getColumns()[0] + " = ?";
 		Movie movie = null;
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -35,7 +35,7 @@ public class ConnectDatabase {
 
 	public void updateMovie (Movie movie) {
 		ResultSet rs = null;
-		String query = "update movies set type = ?, name = ?, releasedate = ?, duration = ?, filmrating = ? where id = ?";
+		String query = "update moves set " + Movie.getColumns()[1] + " = ?, " + Movie.getColumns()[2] + " = ?, " + Movie.getColumns()[3] + " = ?, " + Movie.getColumns()[4] + " = ?, " + Movie.getColumns()[5] + " = ? where " + Movie.getColumns()[0] + " = ?";
 		int i = 1;
 		try {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -54,7 +54,7 @@ public class ConnectDatabase {
 	}
 
 	public void movieInsert (Movie newMovie) {
-		String query = "insert into movies (type, name, releasedate, duration, filmrating) values (?, ?, ?, ?, ?)";
+		String query = "insert into movies (" + Movie.getColumns()[1] + ", " + Movie.getColumns()[2] + ", " + Movie.getColumns()[3] + ", " + Movie.getColumns()[4] + ", " + Movie.getColumns()[5] + ") values (?, ?, ?, ?, ?)";
 		try {
 			int i = 1;
 			PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -72,7 +72,7 @@ public class ConnectDatabase {
 
 	public MovieRating getRating (String id) {
 		ResultSet rs = null;
-		String query = "select * from ratings where id=?";
+		String query = "select * from ratings where " + MovieRating.getColumns()[0] + " = ?";
 		MovieRating rating = null;
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -89,7 +89,7 @@ public class ConnectDatabase {
 	}
 
 	public void ratingInsert (MovieRating movieRating) {
-		String query = "insert into ratings (userid, movieid, status, rating) values (?, ?, ?, ?)";
+		String query = "insert into ratings (" + MovieRating.getColumns()[1] + ", " + MovieRating.getColumns()[2] + ", " + MovieRating.getColumns()[3] + ", " + MovieRating.getColumns()[4] + ") values (?, ?, ?, ?)";
 		try {
 			int i = 1;
 			PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -105,7 +105,7 @@ public class ConnectDatabase {
 
 	public void updateRating (MovieRating movieRating) {
 		ResultSet rs = null;
-		String query = "update ratings set userid = ?, movieid = ?, status = ?, rating = ? where id = ?";
+		String query = "update ratings set " + MovieRating.getColumns()[1] + " = ?, " + MovieRating.getColumns()[2] + " = ?, " + MovieRating.getColumns()[3] + " = ?, " + MovieRating.getColumns()[4] + " = ? where " + MovieRating.getColumns()[0] + " = ?";
 		int i = 1;
 		try {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -124,7 +124,7 @@ public class ConnectDatabase {
 
 	public User getUser (String id) {
 		ResultSet rs = null;
-		String query = "select * from users where id=?";
+		String query = "select * from users where " + User.getColumns()[0] + " = ?";
 		User user = null;
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -141,7 +141,7 @@ public class ConnectDatabase {
 	}
 
 	public void userInsert (User newUser) {
-		String query = "insert into users (firstName, lastName, handleName) values (?, ?, ?)";
+		String query = "insert into users (" + User.getColumns()[1] + ", " + User.getColumns()[2] + ", " + User.getColumns()[3] + ") values (?, ?, ?)";
 		try {
 			int i = 1;
 			PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -157,7 +157,7 @@ public class ConnectDatabase {
 
 	public void updateUser (User newUser) {
 		ResultSet rs = null;
-		String query = "update users set firstName = ?, lastName = ?, handleName = ?";
+		String query = "update users set " + User.getColumns()[1] + ", " + User.getColumns()[2] + "= ?, " + User.getColumns()[3] + " = ? where " + User.getColumns() + " = ?";
 		int i = 1;
 		try {
 			PreparedStatement preparedStmt = con.prepareStatement(query);

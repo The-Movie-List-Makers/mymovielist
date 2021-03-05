@@ -38,9 +38,7 @@ public class User {
 	}
 
 	public User (String id, String firstName, String lastName, String handleName) {
+		this(firstName, lastName, handleName);
 		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.handleName = handleName;
 	}
 }

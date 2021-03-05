@@ -44,10 +44,7 @@ public class MovieRating {
 	}
 
 	public MovieRating (String id, String userID, String movieID, String status, int rating) {
+		this(userID, movieID, status, rating);
 		this.id = id;
-		this.userID = userID;
-		this.movieID = movieID;
-		this.status = status;
-		this.rating = rating;
 	}
 }

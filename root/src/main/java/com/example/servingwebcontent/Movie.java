@@ -50,11 +50,7 @@ public class Movie {
 	}
 
 	public Movie (String id, String type, String name, String releaseDate, int duration, String filmRating) {
+		this(type, name, releaseDate, duration, filmRating);
 		this.id = id;
-		this.type = type;
-		this.name = name;
-		this.releaseDate = releaseDate;
-		this.duration = duration;
-		this.filmRating = filmRating;
 	}
 }
