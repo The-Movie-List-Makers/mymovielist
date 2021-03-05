@@ -15,21 +15,25 @@ public class ConnectDatabase {
 		}
 	}
 
-	public ResultSet getMovie (String id) {
+	public Movie getMovie (String id) {
 		ResultSet rs = null;
 		String query = "select * from movies where id=?";
+		Movie movie = null;
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
+			if (rs.next()) {
+				movie = new Movie(rs.getString("id"), rs.getString("type"), rs.getString("name"), rs.getString("releasedate"), rs.getInt("duration"), rs.getString("filmrating"));
+			}
 		} catch (SQLException e) { 
 			throw new RuntimeException("failed to query movies table", e); 
 		}
 
-		return rs;
+		return movie;
 	}
 
-	public ResultSet updateMovie (Movie movie, String id) {
+	public void updateMovie (Movie movie, String id) {
 		ResultSet rs = null;
 		String query = "update movies set type = ?, name = ?, releasedate = ?, duration = ?, filmrating = ? where id = ?";
 		int i = 1;
@@ -46,7 +50,7 @@ public class ConnectDatabase {
 			throw new RuntimeException("failed to update movie entry", e);
 		}
 
-		return rs;
+		return;
 	}
 
 	public void movieInsert (Movie newMovie) {
@@ -66,18 +70,22 @@ public class ConnectDatabase {
 
 	}
 
-	public ResultSet getRating (String id) {
+	public MovieRating getRating (String id) {
 		ResultSet rs = null;
 		String query = "select * from ratings where id=?";
+		MovieRating rating = null;
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
+			if (rs.next()) {
+				rating = new MovieRating(rs.getString("ratingid"), rs.getString("userid"), rs.getString("movieid"), rs.getString("status"), rs.getInt("rating"));
+			}
 		} catch (SQLException e) { 
 			throw new RuntimeException("failed to query ratings table", e); 
 		}
 
-		return rs;
+		return rating;
 	}
 
 	public void ratingInsert (MovieRating movieRating) {
@@ -95,7 +103,7 @@ public class ConnectDatabase {
 		}
 	}
 
-	public ResultSet updateRating (MovieRating movieRating, String id) {
+	public void updateRating (MovieRating movieRating, String id) {
 		ResultSet rs = null;
 		String query = "update ratings set userid = ?, moviveid = ?, status = ?, rating = ? where id = ?";
 		int i = 1;
@@ -111,21 +119,25 @@ public class ConnectDatabase {
 			throw new RuntimeException("failed to update movie entry", e);
 		}
 
-		return rs;
+		return;
 	}
 
-	public ResultSet getUser (String id) {
+	public User getUser (String id) {
 		ResultSet rs = null;
 		String query = "select * from users where id=?";
+		User user = null;
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
+			if (rs.next()) {
+				user = new User(rs.getString("userid"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("handlename"));
+			}
 		} catch (SQLException e) { 
 			throw new RuntimeException("failed to query user table", e); 
 		}
 
-		return rs;
+		return user;
 	}
 
 	public void userInsert (User newUser) {
@@ -143,7 +155,7 @@ public class ConnectDatabase {
 
 	}
 
-	public ResultSet updateUser (User newUser, String id) {
+	public void updateUser (User newUser, String id) {
 		ResultSet rs = null;
 		String query = "update users set firstName = ?, lastName = ?, handleName = ?";
 		int i = 1;
@@ -158,7 +170,7 @@ public class ConnectDatabase {
 			throw new RuntimeException("failed to update user entry", e);
 		}
 
-		return rs;
+		return;
 	}
 
 	public void closeConnection() {
