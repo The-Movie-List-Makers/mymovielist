@@ -1,17 +1,18 @@
 package com.example.servingwebcontent;
 
 public class User {
-	private String userID;
+	private String id;
 	private String firstName;
 	private String lastName;
 	private String handleName;
+	private static final String [] columns = {"id", "firstname", "lastname", "handlename"};
 
-	public String getUserID () {
-		return userID;
+	public String getID () {
+		return id;
 	}
 
-	public void setUserID (String userID) {
-		this.userID = userID;
+	public void setID (String id) {
+		this.id = id;
 	}
 
 	public String getFirstName () {
@@ -26,14 +27,18 @@ public class User {
 		return handleName;
 	}
 
+	public static final String [] getColumns () {
+		return columns;
+	}
+
 	public User (String firstName, String lastName, String handleName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.handleName = handleName;
 	}
 
-	public User (String userID, String firstName, String lastName, String handleName) {
-		this.userID = userID;
+	public User (String id, String firstName, String lastName, String handleName) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.handleName = handleName;

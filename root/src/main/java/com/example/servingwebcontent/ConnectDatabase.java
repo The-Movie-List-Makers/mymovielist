@@ -24,7 +24,7 @@ public class ConnectDatabase {
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
-				movie = new Movie(rs.getString("id"), rs.getString("type"), rs.getString("name"), rs.getString("releasedate"), rs.getInt("duration"), rs.getString("filmrating"));
+				movie = new Movie(rs.getString(Movie.getColumns()[2]), rs.getString(Movie.getColumns()[1]), rs.getString(Movie.getColumns()[2]), rs.getString(Movie.getColumns()[3]), rs.getInt(Movie.getColumns()[4]), rs.getString(Movie.getColumns()[5]));
 			}
 		} catch (SQLException e) { 
 			throw new RuntimeException("failed to query movies table", e); 
@@ -33,7 +33,7 @@ public class ConnectDatabase {
 		return movie;
 	}
 
-	public void updateMovie (Movie movie, String id) {
+	public void updateMovie (Movie movie) {
 		ResultSet rs = null;
 		String query = "update movies set type = ?, name = ?, releasedate = ?, duration = ?, filmrating = ? where id = ?";
 		int i = 1;
@@ -44,7 +44,7 @@ public class ConnectDatabase {
 			preparedStmt.setString (i++, movie.getReleaseDate());
 			preparedStmt.setInt (i++, movie.getDuration());
 			preparedStmt.setString (i++, movie.getFilmRating());
-			preparedStmt.setString (i++, id);
+			preparedStmt.setString (i++, movie.getID());
 			preparedStmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException("failed to update movie entry", e);
@@ -79,7 +79,7 @@ public class ConnectDatabase {
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
-				rating = new MovieRating(rs.getString("ratingid"), rs.getString("userid"), rs.getString("movieid"), rs.getString("status"), rs.getInt("rating"));
+				rating = new MovieRating(rs.getString(MovieRating.getColumns()[0]), rs.getString(MovieRating.getColumns()[1]), rs.getString(MovieRating.getColumns()[2]), rs.getString(MovieRating.getColumns()[3]), rs.getInt(MovieRating.getColumns()[4]));
 			}
 		} catch (SQLException e) { 
 			throw new RuntimeException("failed to query ratings table", e); 
@@ -103,9 +103,9 @@ public class ConnectDatabase {
 		}
 	}
 
-	public void updateRating (MovieRating movieRating, String id) {
+	public void updateRating (MovieRating movieRating) {
 		ResultSet rs = null;
-		String query = "update ratings set userid = ?, moviveid = ?, status = ?, rating = ? where id = ?";
+		String query = "update ratings set userid = ?, movieid = ?, status = ?, rating = ? where id = ?";
 		int i = 1;
 		try {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -113,7 +113,7 @@ public class ConnectDatabase {
 			preparedStmt.setString (i++, movieRating.getMovieID());
 			preparedStmt.setString (i++, movieRating.getStatus());
 			preparedStmt.setInt (i++, movieRating.getRating());
-			preparedStmt.setString (i++, id);
+			preparedStmt.setString (i++, movieRating.getID());
 			preparedStmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException("failed to update movie entry", e);
@@ -131,7 +131,7 @@ public class ConnectDatabase {
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
-				user = new User(rs.getString("userid"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("handlename"));
+				user = new User(rs.getString(User.getColumns()[0]), rs.getString(User.getColumns()[1]), rs.getString(User.getColumns()[2]), rs.getString(User.getColumns()[3]));
 			}
 		} catch (SQLException e) { 
 			throw new RuntimeException("failed to query user table", e); 
@@ -155,7 +155,7 @@ public class ConnectDatabase {
 
 	}
 
-	public void updateUser (User newUser, String id) {
+	public void updateUser (User newUser) {
 		ResultSet rs = null;
 		String query = "update users set firstName = ?, lastName = ?, handleName = ?";
 		int i = 1;
@@ -164,7 +164,7 @@ public class ConnectDatabase {
 			preparedStmt.setString (i++, newUser.getFirstName());
 			preparedStmt.setString (i++, newUser.getLastName());
 			preparedStmt.setString (i++, newUser.getHandleName());
-			preparedStmt.setString (i++, id);
+			preparedStmt.setString (i++, newUser.getID());
 			preparedStmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException("failed to update user entry", e);

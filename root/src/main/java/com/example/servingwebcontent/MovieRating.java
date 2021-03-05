@@ -1,18 +1,19 @@
 package com.example.servingwebcontent;
 
 public class MovieRating {
-	private String ratingID;
+	private String id;
 	private String userID;
 	private String movieID;
 	private String status;
 	private int rating;
+	private static final String [] columns = {"id", "userid", "movieid", "status", "rating"};
 
-	public String getRatingID () {
-		return ratingID;
+	public String getID () {
+		return id;
 	}
 
-	public void setRatingID (String ratingID) {
-		this.ratingID = ratingID;
+	public void setID (String id) {
+		this.id = id;
 	}
 
 	public String getUserID () {
@@ -31,6 +32,10 @@ public class MovieRating {
 		return rating;
 	}
 
+	public static final String [] getColumns () {
+		return columns;
+	}
+
 	public MovieRating (String userID, String movieID, String status, int rating) {
 		this.userID = userID;
 		this.movieID = movieID;
@@ -38,8 +43,8 @@ public class MovieRating {
 		this.rating = rating;
 	}
 
-	public MovieRating (String ratingID, String userID, String movieID, String status, int rating) {
-		this.ratingID = ratingID;
+	public MovieRating (String id, String userID, String movieID, String status, int rating) {
+		this.id = id;
 		this.userID = userID;
 		this.movieID = movieID;
 		this.status = status;
