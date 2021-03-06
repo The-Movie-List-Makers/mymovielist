@@ -35,7 +35,7 @@ public class ConnectDatabase {
 
 	public void updateMovie(Movie movie) {
 		ResultSet rs = null;
-		String query = "update moves set " + Movie.TYPE + " = ?, " + Movie.NAME + " = ?, " + Movie.RELEASEDATE + " = ?, " + Movie.DURATION + " = ?, " + Movie.FILMRATING + " = ? where " + Movie.ID + " = ?";
+		String query = "update movies set " + Movie.TYPE + " = ?, " + Movie.NAME + " = ?, " + Movie.RELEASEDATE + " = ?, " + Movie.DURATION + " = ?, " + Movie.FILMRATING + " = ? where " + Movie.ID + " = ?";
 		int i = 1;
 		try {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
