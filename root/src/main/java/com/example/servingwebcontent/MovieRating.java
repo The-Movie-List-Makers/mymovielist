@@ -6,44 +6,44 @@ public class MovieRating {
 	private String movieID;
 	private String status;
 	private int rating;
-	private static final String [] columns = {"id", "userid", "movieid", "status", "rating"};
+	public static final String ID = "id";
+	public static final String USERID = "userid";
+	public static final String MOVIEID = "movieid";
+	public static final String STATUS = "status";
+	public static final String RATING = "rating";
 
-	public String getID () {
+	public String getID() {
 		return id;
 	}
 
-	public void setID (String id) {
+	public void setID(String id) {
 		this.id = id;
 	}
 
-	public String getUserID () {
+	public String getUserID() {
 		return userID;
 	}
 
-	public String getMovieID () {
+	public String getMovieID() {
 		return movieID;
 	}
 
-	public String getStatus () {
+	public String getStatus() {
 		return status;
 	}
 
-	public int getRating () {
+	public int getRating() {
 		return rating;
 	}
 
-	public static final String [] getColumns () {
-		return columns;
-	}
-
-	public MovieRating (String userID, String movieID, String status, int rating) {
+	public MovieRating(String userID, String movieID, String status, int rating) {
 		this.userID = userID;
 		this.movieID = movieID;
 		this.status = status;
 		this.rating = rating;
 	}
 
-	public MovieRating (String id, String userID, String movieID, String status, int rating) {
+	public MovieRating(String id, String userID, String movieID, String status, int rating) {
 		this(userID, movieID, status, rating);
 		this.id = id;
 	}

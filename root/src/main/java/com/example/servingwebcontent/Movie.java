@@ -7,41 +7,42 @@ public class Movie {
 	private String releaseDate;
 	private int duration;
 	private String filmRating;
-	private static final String [] columns = {"id", "type", "name", "releasedate", "duration", "filmrating"};
+	public static final String ID = "id";
+	public static final String TYPE = "type";
+	public static final String NAME = "name";
+	public static final String RELEASEDATE = "releasedate";
+	public static final String DURATION = "duration";
+	public static final String FILMRATING = "filmrating";
 
-	public String getID () {
+	public String getID() {
 		return id;
 	}
 
-	public void setID (String id) {
+	public void setID(String id) {
 		this.id = id;
 	}
 
-	public String getType () {
+	public String getType() {
 		return type;
 	}
 
-	public String getName () {
+	public String getName() {
 		return name;
 	}
 
-	public String getReleaseDate () {
+	public String getReleaseDate() {
 		return releaseDate;
 	}
 
-	public int getDuration () {
+	public int getDuration() {
 		return duration;
 	}
 
-	public String getFilmRating () {
+	public String getFilmRating() {
 		return filmRating;
 	}
 
-	public static final String [] getColumns () {
-		return columns;
-	}
-
-	public Movie (String type, String name, String releaseDate, int duration, String filmRating) {
+	public Movie(String type, String name, String releaseDate, int duration, String filmRating) {
 		this.type = type;
 		this.name = name;
 		this.releaseDate = releaseDate;
@@ -49,7 +50,7 @@ public class Movie {
 		this.filmRating = filmRating;
 	}
 
-	public Movie (String id, String type, String name, String releaseDate, int duration, String filmRating) {
+	public Movie(String id, String type, String name, String releaseDate, int duration, String filmRating) {
 		this(type, name, releaseDate, duration, filmRating);
 		this.id = id;
 	}
