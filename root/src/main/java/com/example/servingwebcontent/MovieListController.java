@@ -46,7 +46,7 @@ public class MovieListController {
 		ConnectDatabase connection = new ConnectDatabase("movielist", user, pass);
 
 		try {
-			ResultSet rs = connection.getMovie(movieId);
+			Movie movie = connection.getMovie(movieId);
 		}
 		finally {
 			connection.closeConnection();
